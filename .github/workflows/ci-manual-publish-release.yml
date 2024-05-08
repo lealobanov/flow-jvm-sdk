@@ -48,9 +48,6 @@ jobs:
       - name: Publish release
         env:
           JAVA_OPTS: -Xmx2g -Dorg.gradle.daemon=false
-          SIGNING_KEY: ${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}
-          SIGNING_PASS: ${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
-
           ORG_GRADLE_PROJECT_mavenCentralUsername:  ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword:  ${{ secrets.FLOW_JVM_SDK_SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}
@@ -61,10 +58,4 @@ jobs:
           then
             exit 0;
           fi
-          ./gradlew \
-            -PsnapshotDate="${{ steps.date.outputs.date }}" \
-            -Psigning.key="$SIGNING_KEY" \
-            -Psigning.password="$SIGNING_PASS" \
-            -x test \
-            clean \
-            publishAndReleaseToMavenCentral --no-configuration-cache
+          ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
