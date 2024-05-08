@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_OPTS: -Xmx2g -Dorg.gradle.daemon=false
+      SIGNING_KEY: ${{ secrets.secrets.FLOW_JVM_SDK_SIGNING_KEY }}
+      SIGNING_PASS: ${{ secrets.secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
+      USERNAME: ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}
+      PASSWORD: ${{ secrets.FLOW_JVM_SDK_SONATYPE_PASSWORD }}
     #services:
     #  flow-emulator:
     #    image: gcr.io/flow-container-registry/emulator
@@ -52,10 +56,10 @@ jobs:
           fi
           ./gradlew \
             -PsnapshotDate="${{ steps.date.outputs.date }}" \
-            -Psigning.key="${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}" \
-            -Psigning.password="${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}" \
-            -PmavenCentralUsername="${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}" \
-            -PmavenCentralPassword="${{ secrets.FLOW_JVM_SDK_SONATYPE_PASSWORD }}" \
+            -Psigning.key="$SIGNING_KEY" \
+            -Psigning.password="$SIGNING_PASS" \
+            -PmavenCentralUsername="$USERNAME" \
+            -PmavenCentralPassword="$PASSWORD" \
             -x test \
             clean \
             publishAndReleaseToMavenCentral --no-configuration-cache
