@@ -60,7 +60,7 @@ jobs:
           ./gradlew \
             -PsnapshotDate="${{ steps.date.outputs.date }}" \
             -Psigning.key="$SIGNING_KEY" \
-            -Psigning.password=""$SIGNING_PASS" \
+            -Psigning.password="$SIGNING_PASS" \
             -PmavenCentralUsername="WO8ovTJL" \
             -PmavenCentralPassword="EbvHuF0gXtukq9a/XsF5exEyFX7pbcFjcQLPNfHlTUGG" \
             -x test \
