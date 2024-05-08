@@ -61,8 +61,8 @@ jobs:
             -PsnapshotDate="${{ steps.date.outputs.date }}" \
             -Psigning.key="$SIGNING_KEY" \
             -Psigning.password="$SIGNING_PASS" \
-            -PmavenCentralUsername="$USERNAME" \
-            -PmavenCentralPassword="$PASSWORD" \
+            -PmavenCentralUsername=WO8ovTJL \
+            -PmavenCentralPassword=EbvHuF0gXtukq9a/XsF5exEyFX7pbcFjcQLPNfHlTUGG \
             -x test \
             clean \
             publishAndReleaseToMavenCentral --no-configuration-cache
