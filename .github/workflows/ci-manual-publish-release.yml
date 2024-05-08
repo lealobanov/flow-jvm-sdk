@@ -48,8 +48,8 @@ jobs:
       - name: Publish release
         env:
           JAVA_OPTS: -Xmx2g -Dorg.gradle.daemon=false
-          SIGNING_KEY: ${{ secrets.secrets.FLOW_JVM_SDK_SIGNING_KEY }}
-          SIGNING_PASS: ${{ secrets.secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}
+          SIGNING_PASS: ${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
           USERNAME: ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}
           PASSWORD: ${{ secrets.FLOW_JVM_SDK_SONATYPE_PASSWORD }}
         run: |
