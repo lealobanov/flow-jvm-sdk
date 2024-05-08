@@ -2,8 +2,8 @@ import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // configuration variables
-val defaultGroupId = "org.onflow"
-val defaultVersion = "1.0.0"
+val defaultGroupId = "com.lealobanov"
+val defaultVersion = "1.0.1"
 
 // other variables
 
@@ -173,7 +173,7 @@ tasks {
     mavenPublishing {
         publishToMavenCentral(SonatypeHost.S01, true)
 
-        coordinates(group.toString(), "flow-jvm-sdk", version.toString())
+        coordinates(group.toString(), "test-release", version.toString())
 
         signAllPublications()
 
