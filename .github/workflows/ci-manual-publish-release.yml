@@ -24,6 +24,14 @@ jobs:
     #    ports:
     #      - 3569:3569
     steps:
+      - name: Debug Secrets
+        run: |
+            echo "Secret FLOW_JVM_SDK_SONATYPE_USERNAME: ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}"
+
+      - name: Debug ENV
+        run: |
+            echo "ENV FLOW_JVM_SDK_SONATYPE_USERNAME: "$USERNAME""
+            
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
