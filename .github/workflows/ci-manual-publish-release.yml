@@ -51,6 +51,8 @@ jobs:
           SIGNING_KEY: ${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}
           SIGNING_PASS: ${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
           USERNAME: ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername:  ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword:  ${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}
           PASSWORD: ${{ secrets.FLOW_JVM_SDK_SONATYPE_PASSWORD }}
         run: |
           if [[ "${{ secrets.FLOW_JVM_SDK_CICD_PUBLISH_ENABLED }}" != "true" ]];
@@ -61,8 +63,6 @@ jobs:
             -PsnapshotDate="${{ steps.date.outputs.date }}" \
             -Psigning.key="$SIGNING_KEY" \
             -Psigning.password="$SIGNING_PASS" \
-            -PmavenCentralUsername="WO8ovTJL" \
-            -PmavenCentralPassword="EbvHuF0gXtukq9a/XsF5exEyFX7pbcFjcQLPNfHlTUGG" \
             -x test \
             clean \
             publishAndReleaseToMavenCentral --no-configuration-cache
