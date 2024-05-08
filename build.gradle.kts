@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // configuration variables
 val defaultGroupId = "com.lealobanov"
-val defaultVersion = "1.0.1"
+val defaultVersion = "1.0.0"
 
 // other variables
 
@@ -171,7 +171,7 @@ tasks {
     }
 
     mavenPublishing {
-        publishToMavenCentral(SonatypeHost.S01, true)
+        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, true)
 
         coordinates(group.toString(), "test-release", version.toString())
 
